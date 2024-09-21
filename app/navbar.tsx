@@ -9,34 +9,23 @@ export default function Navbar() {
     return (
         <div className="z-50 pointer-events-auto relative mx-auto flex min-h-full h-full items-center px-1 bg-background">
           <Dock magnification={60} distance={100}>
-            {/* sahil & dhwani portfolio */}
             <Link href="https://sahilshenoy.com" target="_blank" rel="noopener noreferrer" passHref>
                 <DockIcon className="bg-black/10 dark:bg-white/10 p-3">
                   <Icons.manLaptop className="size-full" />
                 </DockIcon>
             </Link>
+            <Link href="https://github.com/sahilshenoy" target="_blank" rel="noopener noreferrer" passHref>
+                <DockIcon className="bg-black/10 dark:bg-white/10 p-3">
+                  <Icons.gitHub className="size-full" />
+                </DockIcon>
+            </Link>
+            <Separator orientation="vertical" className="h-full" /> 
             <Link href="https://dhwanibudhiraja.com" target="_blank" rel="noopener noreferrer" passHref>
                 <DockIcon className="bg-black/10 dark:bg-white/10 p-3">
                   <Icons.womanLaptop className="size-full" />
                 </DockIcon>
             </Link>
-            <Separator orientation="vertical" className="h-full" /> 
-            {/* will roll out the blog after it has been created */}
-            {/* <Separator orientation="vertical" className="h-full" /> 
-            <Link href="/blog" passHref>
-              <div title="Blog">
-                <DockIcon className="bg-white/20 p-3 rounded-full">
-                  <Icons.blog className="w-6 h-6" />
-                </DockIcon>
-              </div>
-            </Link> */}
-            {/* source code for the lambda function as well as the website */}
-            <Link href="https://github.com/sahilshenoy/bucket-byte" target="_blank" rel="noopener noreferrer" passHref>
-                <DockIcon className="bg-black/10 dark:bg-white/10 p-3">
-                  <Icons.gitHub className="size-full" />
-                </DockIcon>
-            </Link>
-            <Link href="https://github.com/sahilshenoy/bucket-byte-backend" target="_blank" rel="noopener noreferrer" passHref>
+            <Link href="https://github.com/dhwanibudhiraja04" target="_blank" rel="noopener noreferrer" passHref>
                 <DockIcon className="bg-black/10 dark:bg-white/10 p-3">
                   <Icons.gitHub className="size-full" />
                 </DockIcon>
