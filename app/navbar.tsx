@@ -7,8 +7,8 @@ export type IconProps = React.HTMLAttributes<SVGElement>;
 
 export default function Navbar() {
     return (
-        <div className="z-50 pointer-events-auto relative mx-auto flex min-h-full h-full items-center px-1 bg-background">
-          <Dock magnification={60} distance={100}>
+        <div className="pointer-events-none fixed inset-x-0 bottom-3 z-30 mx-auto mb-4 flex origin-bottom h-full max-h-14">
+          <Dock magnification={60} distance={100} className = "z-50 pointer-events-auto relative mx-auto flex min-h-full h-full items-center px-1 bg-background [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)] transform-gpu dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset] ">
             <Link href="https://sahilshenoy.com" target="_blank" rel="noopener noreferrer" passHref>
                 <DockIcon className="bg-black/10 dark:bg-white/10 p-3">
                   <Icons.manLaptop className="size-full" />
