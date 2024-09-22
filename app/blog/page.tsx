@@ -1,40 +1,58 @@
+'use client';
+
+import { useState } from 'react';
 import { posts } from "#site/content";
 import { PostItem } from "@/components/post-item";
 import { sortPosts } from "@/lib/utils";
 import { QueryPagination } from "@/components/query-pagination";
-import { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Our blog",
-  description: "Random tech learnings and project documentations",
-};
-
+import { Search } from "@/components/search";
 
 const POSTS_PER_PAGE = 5;
-interface BlogPageProps {
-  searchParams: {
-    page?: string;
-  };
-}
 
-export default async function BlogPage({ searchParams }: BlogPageProps) {
-  const currentPage = Number(searchParams?.page) || 1;
+export default function BlogPage() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState('');
+
   const sortedPosts = sortPosts(posts.filter((post) => post.published));
-  const totalPages = Math.ceil(sortedPosts.length / POSTS_PER_PAGE);
+  
+  const filteredPosts = sortedPosts.filter((post) => 
+    post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+  (post.description ?? '').toLowerCase().includes(searchQuery.toLowerCase()) ||
+  post.body.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
-  const displayPosts = sortedPosts.slice(
+  const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
+
+  const displayPosts = filteredPosts.slice(
     POSTS_PER_PAGE * (currentPage - 1),
     POSTS_PER_PAGE * currentPage
   );
 
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+    setCurrentPage(1);
+  };
+
+  const handleReset = () => {
+    setSearchQuery('');
+    setCurrentPage(1);
+  };
+
   return (
     <div className="container max-w-4xl py-6 lg:py-10">
-      <div className="flex flex-col items-start gap-4 md:flex-row md:justify-between md:gap-8">
-        <div className="flex-1 space-y-4">
-          <h1 className="inline-block font-black text-4xl lg:text-5xl">Blog</h1>
-          <p className="text-xl text-muted-foreground">
+      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div className="space-y-2">
+          <h1 className="font-black text-3xl md:text-4xl lg:text-5xl">Blog</h1>
+          <p className="text-sm md:text-base lg:text-xl text-muted-foreground">
             Just some place to drop our thoughts and ideas.
           </p>
+        </div>
+        <div className="w-full md:w-auto">
+        <Search 
+            onSearch={handleSearch} 
+            value={searchQuery} 
+            onReset={handleReset}
+          />
         </div>
       </div>
       <hr className="mt-8" />
@@ -56,9 +74,12 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
           })}
         </ul>
       ) : (
-        <p>Nothing to see here yet</p>
+        <p>No posts found</p>
       )}
-      <QueryPagination totalPages={totalPages} className="justify-end mt-4" />
+      <QueryPagination 
+        totalPages={totalPages} 
+        className="justify-end mt-4" 
+      />
     </div>
   );
 }
