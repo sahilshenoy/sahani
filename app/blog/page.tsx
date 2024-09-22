@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import { posts } from "#site/content";
 import { PostItem } from "@/components/post-item";
 import { sortPosts } from "@/lib/utils";
@@ -9,7 +9,7 @@ import { Search } from "@/components/search";
 
 const POSTS_PER_PAGE = 5;
 
-export default function BlogPage() {
+function BlogContent() {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -17,8 +17,8 @@ export default function BlogPage() {
   
   const filteredPosts = sortedPosts.filter((post) => 
     post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-  (post.description ?? '').toLowerCase().includes(searchQuery.toLowerCase()) ||
-  post.body.toLowerCase().includes(searchQuery.toLowerCase())
+    (post.description ?? '').toLowerCase().includes(searchQuery.toLowerCase()) ||
+    post.body.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
@@ -39,7 +39,7 @@ export default function BlogPage() {
   };
 
   return (
-    <div className="container max-w-4xl py-6 lg:py-10">
+    <>
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div className="space-y-2">
           <h1 className="font-black text-3xl md:text-4xl lg:text-5xl">Blog</h1>
@@ -48,7 +48,7 @@ export default function BlogPage() {
           </p>
         </div>
         <div className="w-full md:w-auto">
-        <Search 
+          <Search 
             onSearch={handleSearch} 
             value={searchQuery} 
             onReset={handleReset}
@@ -80,6 +80,16 @@ export default function BlogPage() {
         totalPages={totalPages} 
         className="justify-end mt-4" 
       />
+    </>
+  );
+}
+
+export default function BlogPage() {
+  return (
+    <div className="container max-w-4xl py-6 lg:py-10">
+      <Suspense fallback={<div>Loading...</div>}>
+        <BlogContent />
+      </Suspense>
     </div>
   );
 }

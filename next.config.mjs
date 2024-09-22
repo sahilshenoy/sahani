@@ -1,12 +1,28 @@
 import { build } from "velite";
 /** @type {import('next').NextConfig} */
 
-
 export default {
   // other next config here...
   webpack: (config) => {
     config.plugins.push(new VeliteWebpackPlugin());
     return config;
+  },
+  experimental: {
+    appDir: true,
+  },
+  // Add this configuration
+  async headers() {
+    return [
+      {
+        source: '/blog',
+        headers: [
+          {
+            key: 'x-custom-header',
+            value: 'my custom header value',
+          },
+        ],
+      },
+    ];
   },
 };
 
