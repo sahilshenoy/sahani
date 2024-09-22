@@ -3,7 +3,9 @@ type IconProps = React.HTMLAttributes<SVGElement>;
 export const Icons = {
     blog: (props: IconProps) => (
         <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" 
-         viewBox="0 0 512 512" {...props}>
+         viewBox="0 0 512 512" {...props}
+         fill={props.color || "currentColor"} // Set the fill color dynamically
+    stroke={props.color || "currentColor"} >
         <g>
         <rect x="293.186" y="307.184" width="131.572" height="112.986"/>
         <rect x="87.243" y="308.893" width="154.448" height="17.162"/>
