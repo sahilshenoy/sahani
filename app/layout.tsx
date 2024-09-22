@@ -1,17 +1,28 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import { Metadata } from "next";
+import { Metadata, Viewport } from "next";
 import Navbar from "./navbar";
 import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer"
 import { Providers } from "@/components/providers";
+import { siteConfig } from "@/config/site";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
-  title: "Sahani Blog",
-  description: "Our Blog Website for Sahil & Dhwani",
+  title: siteConfig.name,
+  description: siteConfig.description,
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? siteConfig.url),
 };
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -29,6 +40,7 @@ export default function RootLayout({
         <div className="relative flex min-h-dvh flex-col bg-background">
           <SiteHeader />
           <main className="flex-1">{children}</main>
+          <SiteFooter />
           <Navbar />
         </div>
         </Providers>
