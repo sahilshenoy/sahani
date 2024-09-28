@@ -14,7 +14,7 @@ export default function Home() {
             Hello, Welcome to our blog!
           </h1>
           <p className="max-w-[42rem] mx-auto text-muted-foreground sm:text-xl text-balance">
-          We’re Sahil Shenoy and Dhwani Budhiraja, and this is where we document our projects, share insights, and write about what excites us in the world of technology. <br/>This blog is our way of sharing knowledge and updates, including newsletters directly to your inbox.
+          We’re Sahil Shenoy and Dhwani Budhiraja, sharing our projects and insights on technology. Subscribe for updates and get newsletters delivered directly to your inbox.
           </p>
           <div className="flex flex-col gap-4 justify-center sm:flex-row">
             <Link

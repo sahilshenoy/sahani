@@ -1,7 +1,7 @@
 export const siteConfig = {
-    name: "Sahil & Dhwani",
-    url: "https://sah-ani.com",
-    description: "Blog and Newsletter for our technology, thoughts and ideas, using NextJS, shadcm, and AWS SES",
+    name: "Tech with Sahil & Dhwani",
+    url: "https://techwithsd.com",
+    description: "A blog and newsletter platform where we share our projects, technology insights, thoughts, and ideas—built using Next.js, Shadcn, and AWS SES.",
     author: "Sahil & Dhwani",
     author1: "Sahil Shenoy",
     author2: "Dhwani Budhiraja",

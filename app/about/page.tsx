@@ -4,7 +4,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "About Us",
-  description: "Some random information about Sahil & Dhwani",
+  description: "Learn more about Sahil Shenoy and Dhwani Budhiraja, their projects, and their passion for technology.",
 };
 
 
