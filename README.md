@@ -25,34 +25,6 @@ This project is a blog and newsletter platform where we document our technology 
 - **Velite**: A utility-based CSS framework to improve design consistency.
 - **AWS SES**: For email subscription and newsletter distribution.
 
-## Getting Started
-
-### Prerequisites
-- Node.js
-- AWS SES account (for email sending features)
-
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/sahilshenoy/techwithsd.git
-   cd techwithsd
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Run the development server:
-   ```bash
-   npm run dev
-   ```
-
-4. Open your browser and navigate to `http://localhost:3000` to see the website.
-
-### Configuration
-To configure AWS SES for sending emails, follow the AWS SES Documentation to set up your environment and credentials.
 
 ### Contributing
 Contributions are welcome! Feel free to submit a pull request or create an issue to discuss new ideas and features.
